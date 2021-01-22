@@ -41,6 +41,7 @@ Route::post('/homework', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'task' => 'required|max:255',
         'subject' => 'required',
+        'date' => '',
     ]);
 
     if ($validator->fails()) {
@@ -52,6 +53,7 @@ Route::post('/homework', function (Request $request) {
     $homework = new \App\Homework;
     $homework->subject = $request->subject;
     $homework->task = $request->task;
+    $homework->date = $request->date;
     $homework->save();
 
     return redirect('/homework');

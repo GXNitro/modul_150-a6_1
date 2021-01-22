@@ -1,15 +1,15 @@
-<!doctype html>
-<html lang="de">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Homework</title>
-        <link rel="stylesheet" href="{{ mix('/css/app.css') }}" />
-    </head>
-    <body>
-        <div class="container">
-            <p>Hello World</p>
-        </div>
-    </body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
+    <p>Hello World</p>
+</div>
+
+@endsection
+
+@section('footer')
+
+<small>&copy; 2021 by me</small>
+@endsection

@@ -23,6 +23,7 @@
                       <option value="Geschichte">Geschichte</option>
                     </select>
                 </div>
+
             </div>
 
             <div class="form-group">
@@ -30,6 +31,14 @@
 
                 <div class="col-sm-6">
                     <input type="text" name="task" id="homework-task" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="homework-date" class="col-sm-3 control-label">Date</label>
+
+                <div class="col-sm-6">
+                    <input type="date" name="date" id="homework-date" class="form-control">
                 </div>
             </div>
 
@@ -53,7 +62,8 @@
                     <thead>
                         <th>Homework</th>
                         <th>Subject</th>
-                        <th>&nbsp;</th>
+                        <th>Date</th>
+                        <th>Options</th>
                     </thead>
 
                     <tbody>
@@ -64,6 +74,10 @@
                                 </td>
                                 <td class="table-text">
                                     <div>{{ $homework_item->subject }}</div>
+                                </td>
+
+                                <td class="table-text">
+                                    <div>{{ $homework_item->date}}</div>
                                 </td>
 
                                 <td>
