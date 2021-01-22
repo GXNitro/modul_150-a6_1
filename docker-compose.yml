@@ -34,5 +34,14 @@ services:
       MYSQL_PASSWORD: "app"
       MYSQL_DATABASE: "6_1_applikation_anpassen"
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOSTS: db
+
+    restart: always
+    ports:
+      - 8080:80
+
 volumes:
   db_data:
