@@ -26,7 +26,7 @@ class AddDueDateToHomework extends Migration
     public function down()
     {
         Schema::table('homework', function (Blueprint $table) {
-            //
+            $table->dropColumn('date');
         });
     }
 }
