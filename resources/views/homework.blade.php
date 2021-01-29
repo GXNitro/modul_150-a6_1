@@ -14,13 +14,11 @@
 
             <div class="form-group">
                 <label for="homework-subject" class="col-sm-3 control-label">Subject</label>
-
                 <div class="col-sm-6">
                     <select name="subject" id="homework-subject" class="form-control">
-                      <option value="Mathematik">Mathematik</option>
-                      <option value="Deutsch">Deutsch</option>
-                      <option value="Englisch">Englisch</option>
-                      <option value="Geschichte">Geschichte</option>
+                    @foreach ($subjects as $subjects_item)
+                      <option value="{{ $subjects_item->subjectname }}">{{ $subjects_item->subjectname }}</option>
+                    @endforeach
                     </select>
                 </div>
 
@@ -45,7 +43,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Add Homework
+                        <i class="fa fa-plus"></i>&nbsp;Add Homework
                     </button>
                 </div>
             </div>
@@ -85,7 +83,7 @@
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 
-                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i>&nbsp;Löschen</button>
                                     </form>
                                 </td>
                             </tr>

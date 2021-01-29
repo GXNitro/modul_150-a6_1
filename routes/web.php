@@ -22,17 +22,65 @@ Route::get('/hello', function () {
 });
 
 /**
+ * Display All Subjects
+ */
+Route::get('/subjects', function () {
+
+    $subjects = \App\Subjects::orderBy('created_at', 'asc')->get();
+
+    return view('subjects', [
+        'subjects' => $subjects,
+    ]);
+
+    return view('subjects');
+});
+
+/**
+ * Add A New Subject
+ */
+Route::post('/subjects', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'subjects' => 'required|max:255',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect('/subjects')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    $subjects = new \App\Subjects;
+    $subjects->subjectname = $request->subjects;
+    $subjects->save();
+
+    return redirect('/subjects');
+});
+
+/**
+ * Delete An Existing Subject
+ */
+Route::delete('/subjects/{id}', function ($id) {
+    \App\Subjects::findOrFail($id)->delete();
+
+    return redirect('/subjects');
+});
+
+
+/**
  * Display All Tasks
  */
 Route::get('/homework', function () {
 
     $homework = \App\Homework::orderBy('created_at', 'asc')->get();
+    $subjects = \App\Subjects::orderBy('created_at', 'asc')->get();
 
     return view('homework', [
         'homework' => $homework,
+        'subjects' => $subjects,
     ]);
 
     return view('homework');
+    return view('subjects');
 });
 
 /**
